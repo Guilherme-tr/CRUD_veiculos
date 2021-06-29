@@ -11,7 +11,7 @@
         <hr>
 
             <form action="" method="POST" class="formVeiculos">       
-                <p>Modelo <input type="text" name="txtNome" class="posCampos" 
+                <p>Modelo <input type="text" name="txtModelo" class="posCampos" 
                                             size="100" maxlength ="100"   
                                             value=" " /><br>
                     
