@@ -31,9 +31,9 @@
             </p>            
             <div class="centralizar">   
                 <p>                              
-                    <input type="submit" name="btnOperacao" value="Excluir"  /> 
+                    <input class="BUTTON_RYA" type="submit" name="btnOperacao" value="Excluir"  /> 
                     &nbsp; &nbsp;
-                    <input type="submit" name="btnOperacao" value="Cancelar" /> 
+                    <input class="BUTTON_VDR" type="submit" name="btnOperacao" value="Cancelar" /> 
                     &nbsp; &nbsp;
                 </p>
             </div>  
