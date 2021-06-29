@@ -1,0 +1,160 @@
+* {
+    font-family: sans-serif; 
+  }
+  
+  
+  body{
+      background:#E9E9E9; 
+  }
+  
+  hr.linhaSep {
+      border-top: 5px solid burlywood;
+  }
+  
+  .posCampos{
+      position: absolute;
+      left: 90px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);   
+  }
+
+  .centralizar{   
+      margin: 0 auto;  /*Centraliza o div*/
+      text-align: center; /* Centraliza o conteúdo do div (os botões)*/   
+  }
+  
+  .tabTitulo{
+      margin: 0 auto;  /*Centraliza o div*/
+      text-align: center; /* Centraliza o conteúdo do div (os botões)*/   
+      color: #4040ff;   
+      font-size: 24px;
+      font-weight:bolder;
+  }
+  
+  .tabGeral{    
+      border-collapse: collapse;
+      margin: 0 auto;  /*Centraliza tabela*/
+      font-size: 0.9em;
+      min-width: 1024px;
+      border-radius: 5px 5px 0 0;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);    
+  }
+  
+  .tabGeral thead tr {
+    background-color: #4040ff;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .tabGeral th, td {
+    padding: 12px 15px;
+  }
+  
+  
+  .tabGeral tbody tr {
+    border-bottom: 1px solid #dddddd; 
+  }
+  
+  .tabGeral tbody tr:nth-of-type(even) { 
+                    /* estiliza os elementos que são o enésimo número de filhos de seu elemento pai.*/
+                    /* odd: filhos 1,3,2  even: filhos 2, 4, 6  */    
+      background-color: #f3f3f3;
+  }
+  
+  .tabGeral tbody tr:last-of-type { /*aplica o estilo na última linha*/
+    border-bottom: 2px solid #4040ff;
+  }
+  
+  .tabGeral th:first-child { width: 70px  }
+  .tabGeral th:first-child + th {   text-align: center;}
+  .tabGeral th:first-child + th + th {  width: 50px }
+  .tabGeral th:first-child + th + th + th {  width: 70px }
+  .tabGeral th:first-child + th + th + th + th {  width: 70px }
+  
+  
+  .tabGeral td:first-child { width: 70px  }
+  .tabGeral td:first-child + td {   text-align: left;}
+  .tabGeral td:first-child + td + td {  width: 50px }
+  .tabGeral td:first-child + td + td + td {  width: 70px }
+  .tabGeral td:first-child + td + td + td + td {  width: 70px }
+  
+  .msgExcluir{   
+      margin: 0 auto;  /*Centraliza o div*/
+      text-align: center; /* Centraliza o conteúdo do div (os botões)*/  
+      color: red;
+      font-size: 36px;
+      font-weight:bolder;
+  }
+  
+  .msgValCampo{  
+    position: relative;  
+    margin-top: 5px;
+    left: 90px;  
+    color: red;
+    font-size: 14px;  
+  }
+  
+  .msgErro{    
+    border: 2px solid #F5C6CB;
+    border-radius: 25px;
+  
+    /* text-align: center; 
+    color: red;
+    border-radius: f5c6cb;
+    background-color: #;
+    font-size: 18px;
+    font-weight:bolder; */
+  }
+  
+  
+  .tdCentro{
+    text-align: center;
+  }
+  
+  .BUTTON_VDR {
+    background: #3D94F6;
+    background-image: -webkit-linear-gradient(top, #3D94F6, #1E62D0);
+    background-image: -moz-linear-gradient(top, #3D94F6, #1E62D0);
+    background-image: -ms-linear-gradient(top, #3D94F6, #1E62D0);
+    background-image: -o-linear-gradient(top, #3D94F6, #1E62D0);
+    background-image: -webkit-gradient(to bottom, #3D94F6, #1E62D0);
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    color: #FFFFFF;
+    font-family: Helvetica;
+    font-size: 15px;
+    font-weight: 100;
+    padding: 14px;
+    -webkit-box-shadow: 1px 1px 20px 0 #000000;
+    -moz-box-shadow: 1px 1px 20px 0 #000000;
+    box-shadow: 1px 1px 20px 0 #000000;
+    text-shadow: 0 -3px 20px #000000;
+    border: solid #337FED 1px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+ }
+ 
+ .BUTTON_VDR:hover {
+    border: solid #337FED 1px;
+    background: #1E62D0;
+    background-image: -webkit-linear-gradient(top, #1E62D0, #3D94F6);
+    background-image: -moz-linear-gradient(top, #1E62D0, #3D94F6);
+    background-image: -ms-linear-gradient(top, #1E62D0, #3D94F6);
+    background-image: -o-linear-gradient(top, #1E62D0, #3D94F6);
+    background-image: -webkit-gradient(to bottom, #1E62D0, #3D94F6);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-decoration: none;
+ }
+
+  
+  
+  
+  
