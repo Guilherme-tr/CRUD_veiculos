@@ -30,9 +30,9 @@
             </p>            
             <div class="centralizar">   
                 <p>                              
-                    <input type="submit" name="btnOperacao" value="Alterar" /> 
+                    <input class="BUTTON_RYA2" type="submit" name="btnOperacao" value="Alterar" /> 
                     &nbsp; &nbsp;
-                    <input type="submit" name="btnOperacao" value="Cancelar" /> 
+                    <input class="BUTTON_VDR" type="submit" name="btnOperacao" value="Cancelar" /> 
                     &nbsp; &nbsp;
                 </p>
             </div>  
