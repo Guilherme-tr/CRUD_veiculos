@@ -9,7 +9,7 @@
     $sql = "";
     $operacao = "";
 
-    $operacao = "SELECIONAR";
+    $operacao = "INSERIR";
 
     try{
         $con = new PDO("mysql:host=$servidor;dbname=$banco;charset=utf8",$usuario,$senha);
@@ -21,16 +21,22 @@
 
     try{
         if($operacao == "INSERIR"){
-            $modelo = "Corsa";
+            $modelo = "HRV";
             $descricao = "sem destalhes";
-            $preco = 12000.00;
+            $preco = 67000.00;
             $data_criacao = date('Y-m-d H:i:s');
+            $placa = "AAA-0001";
+            $ano = "2020";
+            $blindado = "Sim";
 
-            $cmdSQL = $con->prepare("INSERT INTO veiculos(modelo,descricao,preco,data_criacao) VALUES (:modelo, :descricao, :preco, :data_criacao)");
+            $cmdSQL = $con->prepare("INSERT INTO veiculos(modelo,descricao,preco,data_criacao,placa,ano,blindado) VALUES (:modelo, :descricao, :preco, :data_criacao, :placa, :ano, :blindado)");
             $cmdSQL->bindParam(":modelo", $modelo);
             $cmdSQL->bindParam(":descricao", $descricao);
             $cmdSQL->bindParam(":preco", $preco);
             $cmdSQL->bindParam(":data_criacao", $data_criacao);
+            $cmdSQL->bindParam(":placa", $placa);
+            $cmdSQL->bindParam(":ano", $ano);
+            $cmdSQL->bindParam(":blindado", $blindado);
 
             if($cmdSQL->execute()){
                 echo "Insercao de veiculo efetuada";
@@ -62,10 +68,13 @@
                     echo "Descrição: " . $veic['descricao'] . "<br>";
                     echo "Preço: " . $veic['preco'] . "<br>";
                     echo "Data de criação: " . $veic['data_criacao'] . "<br>";
+                    echo "Placa: " . $veic['placa'] . "<br>";
+                    echo "Ano: " . $veic['ano'] . "<br>";
+                    echo "Blindado: " . $veic['blindado'] . "<br>";
                 }
             }
             else{
-                echo "Falha na insercao";
+                echo "Falha na seleção";
                 var_dump($cmdSQL->errorInfo());
                 die();
             }
@@ -82,18 +91,25 @@
 
             $idveiculo = 1;
 
-            $modelo = "HB20";
+            $modelo = "HRV";
             $descricao = "sem destalhes";
-            $preco = 34000.00;
+            $preco = 67000.00;
             $data_criacao = date('Y-m-d H:i:s');
+            $placa = "AAA-0001";
+            $ano = "2020";
+            $blindado = "Sim";
             
-            $cmdSQL = $con->prepare("UPDATE veiculos SET modelo = :modelo, descricao = :descricao, preco = :preco, data_criacao = :data_criacao WHERE idveiculo = :idveiculo");
+            
+            $cmdSQL = $con->prepare("UPDATE veiculos SET modelo = :modelo, descricao = :descricao, preco = :preco, data_criacao = :data_criacao, placa = :placa, ano = :ano, blindado = :blindado WHERE idveiculo = :idveiculo");
 
             $cmdSQL->bindParam(":idveiculo", $idveiculo);
             $cmdSQL->bindParam(":modelo", $modelo);
             $cmdSQL->bindParam(":descricao", $descricao);
             $cmdSQL->bindParam(":preco", $preco);
             $cmdSQL->bindParam(":data_criacao", $data_criacao);
+            $cmdSQL->bindParam(":placa", $placa);
+            $cmdSQL->bindParam(":ano", $ano);
+            $cmdSQL->bindParam(":blindado", $blindado);
 
             if($cmdSQL->execute()){
                 echo "Alteração bem sucedida";
