@@ -1,3 +1,10 @@
+<?php 
+    include("Veiculo_Processar.php");
+
+    obterCampos();
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,7 +34,24 @@
                     Descrição <input type="text" name="txtDescricao" class="posCampos" 
                                             size="100"  
                                             value=" " />
-                </p>            
+                </p>
+                <p> 
+                    Placa <input type="text" name="txtPlaca" class="posCampos" 
+                                            size="100"  
+                                            value=" " />
+                </p>     
+                <p> 
+                    Ano <input type="text" name="txtAno" class="posCampos" 
+                                            size="10"  
+                                            value=" " />
+                </p>     
+                <p> 
+                    Blindado
+                    <select name="selectBlindado" class="posCampos">
+                        <option value="Sim">Sim</option>
+                        <option value="Nao" selected>Nao</option>
+                    </select>
+                </p>                 
                 <div class="centralizar">
                     <p>
                         <input class="BUTTON_VDR" type="submit" name="btnOperacao" value="Inserir" /> &nbsp; &nbsp;     

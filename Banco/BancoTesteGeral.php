@@ -9,7 +9,7 @@
     $sql = "";
     $operacao = "";
 
-    $operacao = "INSERIR";
+    $operacao = "SELECIONAR";
 
     try{
         $con = new PDO("mysql:host=$servidor;dbname=$banco;charset=utf8",$usuario,$senha);
@@ -71,6 +71,7 @@
                     echo "Placa: " . $veic['placa'] . "<br>";
                     echo "Ano: " . $veic['ano'] . "<br>";
                     echo "Blindado: " . $veic['blindado'] . "<br>";
+                    echo "<br>";
                 }
             }
             else{
@@ -89,11 +90,11 @@
     try{
         if($operacao == "ALTERAR"){
 
-            $idveiculo = 1;
+            $idveiculo = 2;
 
             $modelo = "HRV";
             $descricao = "sem destalhes";
-            $preco = 67000.00;
+            $preco = 61000.00;
             $data_criacao = date('Y-m-d H:i:s');
             $placa = "AAA-0001";
             $ano = "2020";

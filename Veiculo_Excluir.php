@@ -9,7 +9,7 @@
     <body>
         <hr> <h1 class="tabTitulo">Excluir Veiculo</h1>   <hr>
         <form action="" method="POST">  <br>
-        <p> 
+            <p> 
             ID <input type="number" name="txtIdVeiculo" readonly class="posCampos"                                                                        
                                     value=" " />
             </p>
