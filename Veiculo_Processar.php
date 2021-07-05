@@ -106,6 +106,7 @@
     function validaCampos(){
         try{
             global $modelo;
+            global $preco;
 
             $validar = 1;
 
@@ -113,6 +114,11 @@
                 $_SESSION["modeloVazio"] = "Por favor, coloque o nome do modelo";
                 $validar = 0;
             }
+            if(empty($preco)){
+                $_SESSION["precoVazio"] = "Por favor, coloque o preço do modelo";
+                $validar = 0;
+            }
+
             return $validar;
         }catch(Error $ex){
             echo "<h2 style='color: red;'> Erro: " . $ex->getMessage() . "</h2>";
@@ -120,6 +126,21 @@
             die();
         }
         
+    }
+
+    function limparDados(){
+        try{
+            unset($_SESSION['modelo']);
+            unset($_SESSION['descricao']);
+            unset($_SESSION['preco']);
+            unset($_SESSION['modeloVazio']);
+            unset($_SESSION['precoVazio']);
+
+        }catch(Error $ex){
+            echo "<h2 style='color: red;'>Erro: " . $ex->getMessage() . "</h2>";
+            echo "<p><a href='Veiculo_Principal.php'>Clique aqui para voltar</a></p>";
+            die();
+        }
     }
 
 ?>

@@ -9,7 +9,7 @@
     $sql = "";
     $operacao = "";
 
-    $operacao = "SELECIONAR";
+    $operacao = "INSERIR";
 
     try{
         $con = new PDO("mysql:host=$servidor;dbname=$banco;charset=utf8",$usuario,$senha);
@@ -21,11 +21,11 @@
 
     try{
         if($operacao == "INSERIR"){
-            $modelo = "HRV";
+            $modelo = "WRV";
             $descricao = "sem destalhes";
             $preco = 67000.00;
             $data_criacao = date('Y-m-d H:i:s');
-            $placa = "AAA-0001";
+            $placa = "DDD-0001";
             $ano = "2020";
             $blindado = "Sim";
 

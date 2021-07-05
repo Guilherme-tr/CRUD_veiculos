@@ -21,6 +21,11 @@
                 <p>Modelo <input type="text" name="txtModelo" class="posCampos" 
                                             size="100" maxlength ="100"   
                                             value=" " /><br>
+                <?php 
+                    if(!empty($_SESSION['modeloVazio'])){
+                        echo "<span class='msgValCampo'>" . $_SESSION['modeloVazio'] . "</span>";
+                    }
+                ?>
                     
                 </p>
                             
@@ -28,7 +33,11 @@
                     Preço <b>R$</b><input type="number" name="txtPreco" class="posCampos"  
                                             min="0" max="1.000.000" step="500" 
                                             value=" " /><br>
-                    
+                <?php 
+                    if(!empty($_SESSION['precoVazio'])){
+                        echo "<span class='msgValCampo'>" . $_SESSION['precoVazio'] . "</span>";
+                    }
+                ?>
                 </p>            
                 <p> 
                     Descrição <input type="text" name="txtDescricao" class="posCampos" 
