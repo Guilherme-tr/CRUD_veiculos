@@ -2,12 +2,13 @@
     include("Veiculo_Processar.php");
 
     obterCampos();
-
+    
     if($operacao == "INSERIR"){
         inserir();
     }
 
     $veiculos = selecionarTudo();
+  
 
 ?>
 
@@ -37,7 +38,7 @@
                             
                 <p> 
                     Preço <b>R$</b><input type="number" name="txtPreco" class="posCampos"  
-                                            min="0" max="1.000.000" step="500" 
+                                            min="0" step="500" 
                                             value=" " /><br>
                 <?php 
                     if(!empty($_SESSION['precoVazio'])){
@@ -80,7 +81,11 @@
                 <tr>
                     <th>ID</th>
                     <th>Modelo</th>                
+                    <th>Descrição</th>
+                    <th>Data de entrada</th>
                     <th>Preço</th>
+                    <th>Placa</th>
+                    <th>Blindado</th>
                     <th class="tdCentro">Alterar</th>
                     <th class="tdCentro">Excluir</th>
                 </tr>
@@ -88,15 +93,23 @@
             <tbody>
                     <?php 
                         foreach($veiculos as $veic){
-                            echo "Id Veiculo: " . $veic['idveiculo'] . "<br>";
-                            echo "Modelo: " . $veic['modelo'] . "<br>";
-                            echo "Descrição: " . $veic['descricao'] . "<br>";
-                            echo "Preço: " . $veic['preco'] . "<br>";
-                            echo "Data de criação: " . $veic['data_criacao'] . "<br>";
-                            echo "Placa: " . $veic['placa'] . "<br>";
-                            echo "Ano: " . $veic['ano'] . "<br>";
-                            echo "Blindado: " . $veic['blindado'] . "<br>";
-                            echo "<br>";
+                            $idVeiculo = $veic['idveiculo'];
+                            $modelo = $veic['modelo'];
+                            $data_criacao = $veic['data_criacao'];
+                            $preco = $veic['preco'];
+                            $placa = $veic['placa'];
+                            $blindado = $veic['blindado'];
+
+                            echo "<tr>";
+                                echo "<td>$idVeiculo</td>";
+                                echo "<td>$modelo</td>";
+                                echo "<td>$descricao</td>";
+                                echo "<td>$preco</td>";
+                                echo "<td>$placa</td>";
+                                echo "<td>$blindado</td>";
+                                echo "<td>Alt</td>";
+                                echo "<td>Exc</td>";
+                            echo "</tr>";
                         }
                     ?>
             </tbody>
