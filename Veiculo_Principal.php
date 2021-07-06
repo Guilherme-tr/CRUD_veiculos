@@ -3,6 +3,12 @@
 
     obterCampos();
 
+    if($operacao == "INSERIR"){
+        inserir();
+    }
+
+    $veiculos = selecionarTudo();
+
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +71,7 @@
                     <p>
                         <input class="BUTTON_VDR" type="submit" name="btnOperacao" value="Inserir" /> &nbsp; &nbsp;     
                     </p>           
-                </div>            
+                </div>         
             </form>
         </div>
 
@@ -80,7 +86,19 @@
                 </tr>
             </thead>
             <tbody>
-            
+                    <?php 
+                        foreach($veiculos as $veic){
+                            echo "Id Veiculo: " . $veic['idveiculo'] . "<br>";
+                            echo "Modelo: " . $veic['modelo'] . "<br>";
+                            echo "Descrição: " . $veic['descricao'] . "<br>";
+                            echo "Preço: " . $veic['preco'] . "<br>";
+                            echo "Data de criação: " . $veic['data_criacao'] . "<br>";
+                            echo "Placa: " . $veic['placa'] . "<br>";
+                            echo "Ano: " . $veic['ano'] . "<br>";
+                            echo "Blindado: " . $veic['blindado'] . "<br>";
+                            echo "<br>";
+                        }
+                    ?>
             </tbody>
         </table>
     </body>

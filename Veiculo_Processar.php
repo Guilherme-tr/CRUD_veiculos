@@ -2,6 +2,12 @@
 
     date_default_timezone_set('America/Sao_Paulo');
 
+    if(session_start() != PHP_SESSION_ACTIVE){
+        session_start();
+    }
+
+    limparSessao();
+
     $operacao = null;
     $modelo = null;
     $descricao = null;
@@ -128,13 +134,114 @@
         
     }
 
-    function limparDados(){
+    function limparSessao(){
         try{
             unset($_SESSION['modelo']);
             unset($_SESSION['descricao']);
             unset($_SESSION['preco']);
             unset($_SESSION['modeloVazio']);
             unset($_SESSION['precoVazio']);
+
+        }catch(Error $ex){
+            echo "<h2 style='color: red;'>Erro: " . $ex->getMessage() . "</h2>";
+            echo "<p><a href='Veiculo_Principal.php'>Clique aqui para voltar</a></p>";
+            die();
+        }
+    }
+
+
+    function abrirConexao(){
+        $servidor = 'localhost';
+        $banco = 'escola_curso';
+        $usuario = 'root';
+        $senha = 'admin';
+        $con = null;
+
+        try{
+            $con = new PDO("mysql:host=$servidor;dbname=$banco;charset=utf8", $usuario, $senha);
+            return $con;
+        }catch(Error $ex){
+            echo "<h2 style='color: red;'>Erro: " . $ex->getMessage() . "</h2>";
+            echo "<p><a href='Veiculo_Principal.php'>Clique aqui para voltar</a></p>";
+            die();
+        }
+    }
+
+    function inserir(){
+        try{
+            global $modelo;
+            global $descricao;
+            global $preco;
+            global $data_criacao;
+            global $placa;
+            global $ano;
+            global $blindado;
+
+            $data_criacao = date('Y-m-d H:i:s');
+
+            
+            if(!validaCampos()){
+                return;
+            }
+
+            $con = abrirConexao();
+
+            $cmdSQL = $con->prepare("INSERT INTO veiculos(modelo,descricao,preco,data_criacao,placa,ano,blindado) VALUES (:modelo, :descricao, :preco, :data_criacao, :placa, :ano, :blindado)");
+            $cmdSQL->bindParam(":modelo", $modelo);
+            $cmdSQL->bindParam(":descricao", $descricao);
+            $cmdSQL->bindParam(":preco", $preco);
+            $cmdSQL->bindParam(":data_criacao", $data_criacao);
+            $cmdSQL->bindParam(":placa", $placa);
+            $cmdSQL->bindParam(":ano", $ano);
+            $cmdSQL->bindParam(":blindado", $blindado);
+
+            if($cmdSQL->execute()){
+                limparSessao();
+            }
+            else{
+                echo "Falha na insercao";
+                var_dump($cmdSQL->errorInfo());
+                echo "<p><a href='Veiculo_Principal.php'>Clique aqui para voltar</a></p>";
+                die();
+            }
+
+            $con = null;
+
+        }catch(Error $ex){
+            echo "<h2 style='color: red;'>Erro: " . $ex->getMessage() . "</h2>";
+            echo "<p><a href='Veiculo_Principal.php'>Clique aqui para voltar</a></p>";
+            die();
+        }
+    }
+
+    function selecionarTudo(){
+        try{
+
+        $con = abrirConexao();
+
+        $cmdSQL = $con->prepare("SELECT * FROM veiculos");
+        $cmdSQL->bindParam(":idveiculo", $idveiculo);
+
+
+            if($cmdSQL->execute()){
+                $veiculos = $cmdSQL->fetchAll();
+
+                $con = null;
+
+                if(count($veiculos)){
+                    print_r($veiculos);
+                    return $veiculos;
+                }
+                else{
+                    return [];
+                }    
+            }
+            else{
+                echo "Falha na seleção";
+                var_dump($cmdSQL->errorInfo());
+                die();
+            }
+            
 
         }catch(Error $ex){
             echo "<h2 style='color: red;'>Erro: " . $ex->getMessage() . "</h2>";

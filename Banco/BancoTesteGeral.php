@@ -48,6 +48,7 @@
                 die();
             }
 
+            $con = null;
         }
     }catch(PDOException $ex){
         echo "Erro: ". $ex->getMessage() . "<br>";
@@ -58,7 +59,7 @@
         if($operacao == "SELECIONAR"){
             
             $cmdSQL = $con->prepare("SELECT * FROM veiculos");
-
+            $cmdSQL->bindParam(":idveiculo", $idveiculo);
 
             if($cmdSQL->execute()){
                 $veiculos = $cmdSQL->fetchAll();
@@ -79,7 +80,7 @@
                 var_dump($cmdSQL->errorInfo());
                 die();
             }
-
+            $con = null;
         }
     }catch(PDOException $ex){
         echo "Erro: ". $ex->getMessage() . "<br>";
