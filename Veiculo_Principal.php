@@ -82,7 +82,6 @@
                     <th>ID</th>
                     <th>Modelo</th>                
                     <th>Descrição</th>
-                    <th>Data de entrada</th>
                     <th>Preço</th>
                     <th>Placa</th>
                     <th>Blindado</th>
@@ -95,7 +94,7 @@
                         foreach($veiculos as $veic){
                             $idVeiculo = $veic['idveiculo'];
                             $modelo = $veic['modelo'];
-                            $data_criacao = $veic['data_criacao'];
+                            $descricao = $veic['descricao'];
                             $preco = $veic['preco'];
                             $placa = $veic['placa'];
                             $blindado = $veic['blindado'];
