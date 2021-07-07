@@ -85,6 +85,7 @@
                     <th>Preço</th>
                     <th>Placa</th>
                     <th>Blindado</th>
+                    <th>Ano</th>
                     <th class="tdCentro">Alterar</th>
                     <th class="tdCentro">Excluir</th>
                 </tr>
@@ -98,6 +99,7 @@
                             $preco = $veic['preco'];
                             $placa = $veic['placa'];
                             $blindado = $veic['blindado'];
+                            $ano = $veic['ano'];
 
                             echo "<tr>";
                                 echo "<td>$idVeiculo</td>";
@@ -106,8 +108,9 @@
                                 echo "<td>$preco</td>";
                                 echo "<td>$placa</td>";
                                 echo "<td>$blindado</td>";
-                                echo "<td>Alt</td>";
-                                echo "<td>Exc</td>";
+                                echo "<td>$ano</td>";
+                                echo "<td><a href='Veiculo_Atualizar.php?txtIdVeiculo=$idVeiculo'><img src='img/Editar.png' width='20px' height='20px' /> </a></td>";
+                                echo "<td><a href='Veiculo_Excluir.php?txtIdVeiculo=$idVeiculo'><img src='img/Excluir.png'width='20px' height='20px' /> </a></td>";
                             echo "</tr>";
                         }
                     ?>

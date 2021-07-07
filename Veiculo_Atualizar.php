@@ -1,3 +1,22 @@
+<?php 
+    include("Veiculo_Processar.php");
+
+    obterCampos();
+    
+
+    if($operacao == "ALTERAR"){
+        atualizar();
+    }
+    elseif($operacao == "CANCELAR"){
+        header("Location: Veiculo_Principal.php");
+    }
+
+    $veiculos = selecionarPorId();
+  
+
+?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -9,25 +28,29 @@
     <body>
         <hr><h1 class="tabTitulo">Alterar veiculo</h1><hr>
         <form action="" method="POST">
-            <p> 
-            ID <input type="number" name="txtIdVeiculo" readonly class="posCampos"                                                                        
-                                    value=" " />
-            </p>
 
             <p>           
-            Nome <input type="text" name="txtModelo" class="posCampos" 
+            Modelo <input type="text" name="txtModelo" class="posCampos" 
                                     size="100" maxlength ="100"   
-                                    value=" " />            
+                                    value=" <?php echo $veiculos[0]['modelo']; ?>" />            
             </p>            
             <p> 
             Preço <input type="number" name="txtPreco" class="posCampos"  
-                                    min="0" max="10" step=".5" 
-                                    value=" " />
+                                    min="0"
+                                    value=" <?php echo $veiculos[0]['preco']; ?>" />
             </p>            
             <p> 
             Descrição <input type="text" name="txtDescricao" class="posCampos" 
-                                    size="100"  value=" " />
-            </p>            
+                                    size="100"  value=" <?php echo $veiculos[0]['descricao']; ?>" />
+            </p> 
+            <p> 
+            Placa <input type="text" name="txtDescricao" readonly class="posCampos" 
+                                    size="100"  value=" <?php echo $veiculos[0]['placa']; ?>" />
+            </p>
+            <p> 
+            Ano <input type="text" name="txtDescricao" readonly class="posCampos" 
+                                    size="100"  value=" <?php echo $veiculos[0]['ano']; ?>" />
+            </p>               
             <div class="centralizar">   
                 <p>                              
                     <input class="BUTTON_RYA2" type="submit" name="btnOperacao" value="Alterar" /> 

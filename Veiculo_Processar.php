@@ -17,15 +17,14 @@
     $ano = null;
     $blindado = null;
 
-    echo "Processar";
 
     function obterCampos(){
         try{
+            global $idVeiculo;
             global $operacao;
             global $modelo;
             global $descricao;
             global $preco;
-            global $data_criacao;
             global $placa;
             global $ano;
             global $blindado;
@@ -91,7 +90,7 @@
                     $_SESSION["blindado"] = $blindado;
                 }
             }
-
+            /*
             echo "Operacção: $operacao <br>";
             echo "Modelo: $modelo <br>";
             echo "Descrição: $descricao <br>";
@@ -99,6 +98,7 @@
             echo "Placa: $placa <br>";
             echo "Ano: $ano <br>";
             echo "Blindado: $blindado <br>";
+            */
 
         }catch(Error $ex){
             echo "<h2 style='color: red;'> Erro: " . $ex->getMessage() . "</h2>";
@@ -229,7 +229,7 @@
                 $con = null;
 
                 if(count($veiculos)){
-                    print_r($veiculos);
+                    //print_r($veiculos);
                     return $veiculos;
                 }
                 else{
@@ -248,6 +248,87 @@
             echo "<p><a href='Veiculo_Principal.php'>Clique aqui para voltar</a></p>";
             die();
         }
+    }
+
+    function selecionarPorId(){
+        try{
+
+            global $idVeiculo;
+
+            $con = abrirConexao();
+
+            $cmdSQL = $con->prepare("SELECT * FROM veiculos WHERE idveiculo = :idVeiculo");
+            $cmdSQL->bindParam(":idVeiculo", $idVeiculo);
+
+
+            if($cmdSQL->execute()){
+                $veiculos = $cmdSQL->fetchAll();
+
+                $con = null;
+
+                if(count($veiculos)){
+                    //print_r($veiculos);
+                    return $veiculos;
+                }
+                else{
+                    return [];
+                }    
+            }
+            else{
+                echo "Falha na seleção";
+                var_dump($cmdSQL->errorInfo());
+                die();
+            }
+            
+
+        }catch(Error $ex){
+            echo "<h2 style='color: red;'>Erro: " . $ex->getMessage() . "</h2>";
+            echo "<p><a href='Veiculo_Principal.php'>Clique aqui para voltar</a></p>";
+            die();
+        }
+    }
+
+    function atualizar(){
+        global $idVeiculo;
+        global $modelo;
+        global $descricao;
+        global $preco;
+        global $data_criacao;
+        global $placa;
+        global $ano;
+        global $blindado;
+        $data_criacao = date('Y-m-d H:i:s');
+
+            
+            if(!validaCampos()){
+                return;
+            }
+
+            $con = abrirConexao();
+
+            $cmdSQL = $con->prepare("UPDATE veiculos SET modelo = :modelo, descricao = :descricao, preco = :preco, data_criacao = :data_criacao, placa = :placa, ano = :ano, blindado = :blindado WHERE idveiculo = :idVeiculo");
+
+            $cmdSQL->bindParam(":idVeiculo", $idVeiculo);
+            $cmdSQL->bindParam(":modelo", $modelo);
+            $cmdSQL->bindParam(":descricao", $descricao);
+            $cmdSQL->bindParam(":preco", $preco);
+            $cmdSQL->bindParam(":data_criacao", $data_criacao);
+            $cmdSQL->bindParam(":placa", $placa);
+            $cmdSQL->bindParam(":ano", $ano);
+            $cmdSQL->bindParam(":blindado", $blindado);
+
+            if($cmdSQL->execute()){
+                limparSessao();
+                header("Location: Veiculo_Principal.php");
+            }
+            else{
+                echo "Falha na insercao";
+                var_dump($cmdSQL->errorInfo());
+                echo "<p><a href='Veiculo_Principal.php'>Clique aqui para voltar</a></p>";
+                die();
+            }
+
+            $con = null;
     }
 
 ?>
