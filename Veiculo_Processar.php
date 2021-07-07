@@ -289,21 +289,20 @@
     }
 
     function atualizar(){
-        global $idVeiculo;
-        global $modelo;
-        global $descricao;
-        global $preco;
-        global $data_criacao;
-        global $placa;
-        global $ano;
-        global $blindado;
-        $data_criacao = date('Y-m-d H:i:s');
+        try{
+            global $idVeiculo;
+            global $modelo;
+            global $descricao;
+            global $preco;
+            global $data_criacao;
+            global $placa;
+            global $ano;
+            global $blindado;
+            $data_criacao = date('Y-m-d H:i:s');
 
-            /*
             if(!validaCampos()){
                 return;
             }
-            */
 
             $con = abrirConexao();
 
@@ -338,6 +337,43 @@
             }
 
             $con = null;
+        }catch(Error $ex){
+            echo "<h2 style='color: red;'>Erro: " . $ex->getMessage() . "</h2>";
+            echo "<p><a href='Veiculo_Principal.php'>Clique aqui para voltar</a></p>";
+            die();
+        }
+        
+    }
+
+    function excluir(){
+        try{
+            global $idVeiculo;
+
+            $con = abrirConexao();
+
+            $cmdSQL = $con->prepare("DELETE FROM veiculos 
+                                     WHERE idveiculo = :idVeiculo");
+
+            $cmdSQL->bindParam(":idVeiculo", $idVeiculo);
+
+            if($cmdSQL->execute()){
+                limparSessao();
+                header("Location: Veiculo_Principal.php");
+            }
+            else{
+                echo "Falha na exclusão";
+                var_dump($cmdSQL->errorInfo());
+                echo "<p><a href='Veiculo_Principal.php'>Clique aqui para voltar</a></p>";
+                die();
+            }
+
+            $con = null;
+
+        }catch(Error $ex){
+            echo "<h2 style='color: red;'>Erro: " . $ex->getMessage() . "</h2>";
+            echo "<p><a href='Veiculo_Principal.php'>Clique aqui para voltar</a></p>";
+            die();
+        }
     }
 
 ?>

@@ -109,8 +109,8 @@
                                 echo "<td>$placa</td>";
                                 echo "<td>$blindado</td>";
                                 echo "<td>$ano</td>";
-                                echo "<td><a href='Veiculo_Atualizar.php?txtIdVeiculo=$idVeiculo'><img src='img/Editar.png' width='20px' height='20px' /> </a></td>";
-                                echo "<td><a href='Veiculo_Excluir.php?txtIdVeiculo=$idVeiculo'><img src='img/Excluir.png'width='20px' height='20px' /> </a></td>";
+                                echo "<td><a href='Veiculo_Atualizar.php?txtIdVeiculo=$idVeiculo'><img src='img/Editar.png'/> </a></td>";
+                                echo "<td><a href='Veiculo_Excluir.php?txtIdVeiculo=$idVeiculo'><img src='img/Excluir.png'/> </a></td>";
                             echo "</tr>";
                         }
                     ?>

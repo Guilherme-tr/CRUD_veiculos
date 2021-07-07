@@ -58,7 +58,7 @@
                         <option value="Sim">Sim</option>
                         <option value="Nao" selected>Nao</option>
                     </select>
-                </p>               
+            </p>               
             <div class="centralizar">  
             <br> 
                 <p>                              
