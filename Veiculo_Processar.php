@@ -299,14 +299,23 @@
         global $blindado;
         $data_criacao = date('Y-m-d H:i:s');
 
-            
+            /*
             if(!validaCampos()){
                 return;
             }
+            */
 
             $con = abrirConexao();
 
-            $cmdSQL = $con->prepare("UPDATE veiculos SET modelo = :modelo, descricao = :descricao, preco = :preco, data_criacao = :data_criacao, placa = :placa, ano = :ano, blindado = :blindado WHERE idveiculo = :idVeiculo");
+            $cmdSQL = $con->prepare("UPDATE veiculos 
+                                     SET modelo = :modelo, 
+                                     descricao = :descricao, 
+                                     preco = :preco, 
+                                     data_criacao = :data_criacao, 
+                                     placa = :placa, 
+                                     ano = :ano, 
+                                     blindado = :blindado 
+                                     WHERE idveiculo = :idVeiculo");
 
             $cmdSQL->bindParam(":idVeiculo", $idVeiculo);
             $cmdSQL->bindParam(":modelo", $modelo);
@@ -322,7 +331,7 @@
                 header("Location: Veiculo_Principal.php");
             }
             else{
-                echo "Falha na insercao";
+                echo "Falha na atualização";
                 var_dump($cmdSQL->errorInfo());
                 echo "<p><a href='Veiculo_Principal.php'>Clique aqui para voltar</a></p>";
                 die();

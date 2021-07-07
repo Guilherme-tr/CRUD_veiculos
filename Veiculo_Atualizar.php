@@ -27,6 +27,7 @@
     </head>
     <body>
         <hr><h1 class="tabTitulo">Alterar veiculo</h1><hr>
+        <br>
         <form action="" method="POST">
 
             <p>           
@@ -44,14 +45,22 @@
                                     size="100"  value=" <?php echo $veiculos[0]['descricao']; ?>" />
             </p> 
             <p> 
-            Placa <input type="text" name="txtDescricao" readonly class="posCampos" 
+            Placa <input type="text" name="txtPlaca" readonly class="posCampos" 
                                     size="100"  value=" <?php echo $veiculos[0]['placa']; ?>" />
             </p>
             <p> 
-            Ano <input type="text" name="txtDescricao" readonly class="posCampos" 
+            Ano <input type="text" name="txtAno" readonly class="posCampos" 
                                     size="100"  value=" <?php echo $veiculos[0]['ano']; ?>" />
-            </p>               
-            <div class="centralizar">   
+            </p>
+            <p> 
+                Blindado
+                    <select name="selectBlindado" class="posCampos">
+                        <option value="Sim">Sim</option>
+                        <option value="Nao" selected>Nao</option>
+                    </select>
+                </p>               
+            <div class="centralizar">  
+            <br> 
                 <p>                              
                     <input class="BUTTON_RYA2" type="submit" name="btnOperacao" value="Alterar" /> 
                     &nbsp; &nbsp;
