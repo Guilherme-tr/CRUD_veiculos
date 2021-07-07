@@ -1,4 +1,8 @@
 <?php 
+    // REALIZADORES: 
+    //GUILHERME TRUJILO SC3005101
+    //VINICIUS CEROSI SC3005453 
+    
     date_default_timezone_set('America/Sao_Paulo');
     $servidor = 'localhost';
     $banco = 'escola_curso';
